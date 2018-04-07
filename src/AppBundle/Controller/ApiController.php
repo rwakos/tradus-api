@@ -26,6 +26,7 @@ class ApiController extends Controller {
     public function getOffers()
     {
 
+
         $offers = [
             ["id"=>1, "title"=>"Outlander mini", "description"=>"In perfect condition", "email"=>"demo@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/irvcqv1wko8d1-HVYM/image", "created_at" => "2016-10-20"],
             ["id"=>2, "title"=>"Motor XLMN98", "description"=>"Real Bargain", "email"=>"dummy@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/cqzybfy58cge3-HVYM/image", "created_at" => "2017-04-21"],
@@ -33,7 +34,21 @@ class ApiController extends Controller {
         ];
 
         $data = ["data"=> $offers];
-        return new JsonResponse($data);
+
+        $response = new Response();
+        $response->setContent(json_encode($data));
+
+        $response->headers->set('Content-Type', 'application/json');
+        // Allow all websites
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        // Or a predefined website
+        //$response->headers->set('Access-Control-Allow-Origin', 'https://jsfiddle.net/');
+        // You can set the allowed methods too, if you want    //$response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
+        return $response;
+
+
+
+        //return new JsonResponse($data, 200, ['Content-Type' => 'application/json']);
     }
 
     /**
@@ -51,7 +66,18 @@ class ApiController extends Controller {
         ];
 
         $data = ["data"=> $offers[$id-1]];
-        return new JsonResponse($data);
+
+        $response = new Response();
+        $response->setContent(json_encode($data));
+
+        $response->headers->set('Content-Type', 'application/json');
+        // Allow all websites
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        // Or a predefined website
+        //$response->headers->set('Access-Control-Allow-Origin', 'https://jsfiddle.net/');
+        // You can set the allowed methods too, if you want    //$response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
+        return $response;
+
     }
 
     /**
