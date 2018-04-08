@@ -13,21 +13,6 @@ use AppBundle\Entity\Offer;
 
 class ApiController extends FOSRestController {
     /**
-     * @Rest\Get("/")
-     */
-    public function displayDocumentation()
-    {
-        /*
-         *  GET       api_url_offer_get_all: /offers
-            GET       api_url_offer_get_one: /offers/{id}
-            GET       api_url_offer_search:  /search/offers/{search}
-            POST      api_url_offer_create:  /offer
-            PATCH     api_url_offer_update:  /offers/{id}
-            DELETE    api_url_offer_delete:  /offers
-         * */
-    }
-
-    /**
      * @Rest\Get("/offers")
      * @return JsonResponse
      */
@@ -38,7 +23,7 @@ class ApiController extends FOSRestController {
             ->findAll();
 
         if (($offers === null)||(empty($offers))) {
-            return new View("there are no offers", Response::HTTP_NOT_FOUND);
+            return new View("THERE ARE NO OFFERS", Response::HTTP_NOT_FOUND);
         }
         return $offers;
     }
@@ -52,7 +37,7 @@ class ApiController extends FOSRestController {
     {
         $singleresult = $this->getDoctrine()->getRepository('AppBundle:Offer')->find($id);
         if (($singleresult === null)||(empty($singleresult))) {
-            return new View("Offer not found", Response::HTTP_NOT_FOUND);
+            return new View("OFFER NOT FOUND", Response::HTTP_NOT_FOUND);
         }
         return $singleresult;
     }
@@ -79,7 +64,7 @@ class ApiController extends FOSRestController {
         $offers = $query->getResult();
 
         if (($offers === null)||(empty($offers))) {
-            return new View("there are no offers", Response::HTTP_NOT_FOUND);
+            return new View("THERE ARE NO OFFERS MATCHING THAT SEARCH", Response::HTTP_NOT_FOUND);
         }
         return $offers;
     }
@@ -95,12 +80,20 @@ class ApiController extends FOSRestController {
         $title = $request->get('title');
         $description = $request->get('description');
         $email = $request->get('email');
-        $image = $request->get('description');
+        $image = $request->get('image');
 
         if(empty($title) || empty($description) || empty($email) || empty($image))
         {
             return new View("NULL VALUES ARE NOT ALLOWED", Response::HTTP_NOT_ACCEPTABLE);
         }
+        if (!$this->isEmail($email)) {
+            return new View("THE EMAIL ADDRESS FORMAT IS INCORRECT", Response::HTTP_NOT_ACCEPTABLE);
+        }
+
+        if (!$this->isUrl($image)) {
+            return new View("THE IMAGE URL FORMAT IS INCORRECT", Response::HTTP_NOT_ACCEPTABLE);
+        }
+
         $em = $this->getDoctrine()->getManager();
         $duplicate_email = $em->getRepository('AppBundle:Offer')
             ->findOneBy(['email' => $email]);
@@ -114,33 +107,76 @@ class ApiController extends FOSRestController {
         $offer->setDescription($description);
         $offer->setEmail($email);
         $offer->setImage($image);
-        $offer->setCreatedAt(date('Y-m-d'));
+        $offer->setCreatedAt(new \DateTime("now"));
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($offer);
         $em->flush();
 
-        return new View("Offer Added Successfully", Response::HTTP_OK);
+        return new View("OFFER STORED SUCCESFULLY", Response::HTTP_OK);
     }
 
     /**
-     * @Rest\Patch("/offers/{id}")
+     * @Rest\Put("/offers/{id}")
      * @param $id int
      * @param $request Request
      * @return Response
      */
 
-    public function updateOffer(Request $request, $id)
+    public function updateOffer($id, Request $request)
     {
+        $title = $request->get('title');
+        $description = $request->get('description');
+        $email = $request->get('email');
+        $image = $request->get('image');
 
-        $data = ["data"=> $id];
-        $response = new Response();
-        $response->setContent(json_encode($data));
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Access-Control-Allow-Methods', 'PATCH, OPTIONS');
+        $offer_db = $this->getDoctrine()->getRepository('AppBundle:Offer')->find($id);
+        if (empty($offer_db)){
+            return new View("OFFER NOT FOUND", Response::HTTP_NOT_FOUND);
+        }
 
-        return $response;
+        if(empty($title)){
+            return new View("DESC".$title, Response::HTTP_NOT_ACCEPTABLE);
+        }
+
+
+        if(empty($title) || empty($description) || empty($email) || empty($image))
+        {
+            return new View("NULL VALUES ARE NOT ALLOWED", Response::HTTP_NOT_ACCEPTABLE);
+        }
+
+        if (!$this->isEmail($email)) {
+            return new View("THE EMAIL ADDRESS FORMAT IS INCORRECT", Response::HTTP_NOT_ACCEPTABLE);
+        }
+
+        if (!$this->isUrl($image)) {
+            return new View("THE IMAGE URL FORMAT IS INCORRECT", Response::HTTP_NOT_ACCEPTABLE);
+        }
+
+        if ($email != $offer_db->getEmail()){
+            $repository = $this->getDoctrine()
+                ->getRepository('AppBundle:Offer');
+
+            $query = $repository->createQueryBuilder('o')
+                ->where('id <> :id')
+                ->setParameter('id', $id)
+                ->getQuery();
+
+            $duplicate_email = $query->getResult();
+            if (!empty($duplicate_email)){
+                return new View("THE EMAIL ACCOUNT ALREADY EXISTS", Response::HTTP_NOT_ACCEPTABLE);
+            }
+        }
+
+        $offer_db->setTitle($title);
+        $offer_db->setDescription($description);
+        $offer_db->setEmail($email);
+        $offer_db->setImage($image);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($offer_db);
+        $em->flush();
+        return new View("OFFER UPDATED SUCCESFULLY", Response::HTTP_OK);
+
     }
 
     /**
@@ -150,12 +186,51 @@ class ApiController extends FOSRestController {
      */
     public function destroyOffers(Request $request)
     {
-        $response = new Response();
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Access-Control-Allow-Methods', 'DELETE, OPTIONS');
+        $deleted = false;
+        $rq = $request->get('offers');
 
-        return $response;
+        if (empty($rq)){
+            return new View("NULL VALUES ARE NOT ALLOWED", Response::HTTP_NOT_ACCEPTABLE);
+        }
+
+        $obj = json_decode($rq, true);
+        $em = $this->getDoctrine()->getManager();
+
+        foreach ($obj as $of){
+            if (is_numeric($of["id"])){
+                $id = intval($of["id"]);
+                $found = $this->getDoctrine()->getRepository('AppBundle:Offer')->find($id);
+
+                if (!empty($found)){
+                    $deleted = true;
+                    $em->remove($found);
+                    $em->flush();
+                }
+            }
+        }
+
+        if ($deleted){
+            return new View("OFFERS DELETED", Response::HTTP_OK);
+        } else {
+            return new View("OFFER NOT FOUND", Response::HTTP_NOT_FOUND);
+        }
+
+    }
+
+    private function isEmail($val){
+        if (!filter_var($val, FILTER_VALIDATE_EMAIL)) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private function isUrl($val){
+        if (!filter_var($val, FILTER_VALIDATE_URL)) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }

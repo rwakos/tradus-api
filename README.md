@@ -1,77 +1,99 @@
-Symfony Standard Edition
+Api for Offers @Tradus
 ========================
 
-**WARNING**: This distribution does not support Symfony 4. See the
-[Installing & Setting up the Symfony Framework][15] page to find a replacement
-that fits you best.
+This REST API will allow you to perform all the CRUD methods with the Offer Object.
 
-Welcome to the Symfony Standard Edition - a fully-functional Symfony
-application that you can use as the skeleton for your new applications.
 
-For details on how to download and get started with Symfony, see the
-[Installation][1] chapter of the Symfony Documentation.
-
-What's inside?
+Offer's Table Specs
 --------------
 
-The Symfony Standard Edition is configured with the following defaults:
+All the fillable fields are required:
 
-  * An AppBundle you can use to start coding;
+* id: int AI. | not fillable | PRIMARY KEY
+* title: string(80) | not null | required
+* description: string(255) | not null | required
+* email: string(80) | not null | unique | email format | required
+* image: string(255) | not null | url format | required
+* created_at: date | not fillable
 
-  * Twig as the only configured template engine;
+REST Methods
+--------------
 
-  * Doctrine ORM/DBAL;
+  * [**Get All Offers**][1]  Verb: GET [/offers][1]
+  
+    Returns all Offers in the table Offer.
+  
+  **Error Handler:**
+  
+  **404** - if there are no Offers.
+  
+    
+  * [**Search Offers**][1]  Verb: GET [/search/offers/{search}][1]
+    
+    Returns all Offers that matches (LIKE), the param **search** against "title", "description" or "email".
+    
+          @param search is a string
+    
+  **Error Handler:**
+    
+  **404** - if there are no Offers that matches the search.  
+  
+  
+  * [**Get One Offer**][1]  Verb: GET [/offers/{id}][1]
+      
+    Returns the Offer if found with the "id" of @param id.
+      
+            @param id is an int
+    
+    Note: this URL should have been [/offer/{id}][1]  (in singular), so the search url could be: [/offers/search/{id}][1]
+      
+    **Error Handler:**
+      
+    **404** - if there are no Offers that matches the id.  
+  
+  
+  * [**Store Offer**][1]  Verb: POST [/offer][1]
+        
+      Returns status of **200** on Success.
+        
+      **Error Handler:**
+        
+      **406** - if there is an empty parameter (view table's Specs for fillable - required fields), or if the parameters doesn't comply with the format.
 
-  * Swiftmailer;
 
-  * Annotations enabled for everything.
+  * [**Update Offer**][1]  Verb: PUT [/offers/id][1]
+        
+      Updates the Offer if found with the "id" of @param id.
+            
+           @param id is an int
+      
+      Returns status of **200** on Success.
+      
+      Note: this URL should have been [/offer/{id}][1]  (in singular)
+        
+      **Error Handler:**
+      
+      **404** - if there are no Offer with "id" = @param id.
+      
+      **406** - if there is an empty parameter (view table's Specs for fillable - required fields), or if the parameters doesn't comply with the format.
 
-It comes pre-configured with the following bundles:
 
-  * **FrameworkBundle** - The core Symfony framework bundle
+  * [**Delete Offer(s)**][1]  Verb: DELETE [/offers/id][1]
+        
+      Updates the Offer if found with the "id" of @param id.
+            
+           @param offers is json in format: [{"id":1}, {"id":3}]
+      Returns status of **200** on Success.
+              
+      **Error Handler:**
+      
+      **406** - if there parameter is empty
+      
+      **404** - if there is no match against the all id's.
 
-  * [**SensioFrameworkExtraBundle**][6] - Adds several enhancements, including
-    template and routing annotation capability
 
-  * [**DoctrineBundle**][7] - Adds support for the Doctrine ORM
+[1]:  https://void.com/
 
-  * [**TwigBundle**][8] - Adds support for the Twig templating engine
 
-  * [**SecurityBundle**][9] - Adds security by integrating Symfony's security
-    component
+    @Work Made By Richard Reveron 2018 for Tradus.
 
-  * [**SwiftmailerBundle**][10] - Adds support for Swiftmailer, a library for
-    sending emails
-
-  * [**MonologBundle**][11] - Adds support for Monolog, a logging library
-
-  * **WebProfilerBundle** (in dev/test env) - Adds profiling functionality and
-    the web debug toolbar
-
-  * **SensioDistributionBundle** (in dev/test env) - Adds functionality for
-    configuring and working with Symfony distributions
-
-  * [**SensioGeneratorBundle**][13] (in dev env) - Adds code generation
-    capabilities
-
-  * [**WebServerBundle**][14] (in dev env) - Adds commands for running applications
-    using the PHP built-in web server
-
-  * **DebugBundle** (in dev/test env) - Adds Debug and VarDumper component
-    integration
-
-All libraries and bundles included in the Symfony Standard Edition are
-released under the MIT or BSD license.
-
-Enjoy!
-
-[1]:  https://symfony.com/doc/3.4/setup.html
-[6]:  https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/index.html
-[7]:  https://symfony.com/doc/3.4/doctrine.html
-[8]:  https://symfony.com/doc/3.4/templating.html
-[9]:  https://symfony.com/doc/3.4/security.html
-[10]: https://symfony.com/doc/3.4/email.html
-[11]: https://symfony.com/doc/3.4/logging.html
-[13]: https://symfony.com/doc/current/bundles/SensioGeneratorBundle/index.html
-[14]: https://symfony.com/doc/current/setup/built_in_web_server.html
-[15]: https://symfony.com/doc/current/setup.html
