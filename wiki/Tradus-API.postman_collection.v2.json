@@ -1,0 +1,365 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Tradus-API",
+		"_postman_id": "be2b3f20-583b-eb12-2fed-8a7f95d729fa",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Offers",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "tradus2018",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "http://127.0.0.1:8001/offers",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46dHJhZHVzMjAxOA==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Request for: all the offers in table Offer."
+			},
+			"response": [
+				{
+					"id": "b54cb92d-1fe6-479a-871e-0613a7310995",
+					"name": "Get All Offers",
+					"originalRequest": {
+						"url": "http://127.0.0.1:8001/offers",
+						"method": "GET",
+						"header": [],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache, private",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Sun, 08 Apr 2018 15:31:12 +0000, Sun, 08 Apr 2018 15:31:12 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "host",
+							"key": "host",
+							"value": "127.0.0.1:8001",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-debug-token",
+							"key": "x-debug-token",
+							"value": "ca9dea",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-debug-token-link",
+							"key": "x-debug-token-link",
+							"value": "http://127.0.0.1:8001/_profiler/ca9dea",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "PHP/7.1.7",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookie": [],
+					"responseTime": 347,
+					"body": "[{\"id\":1,\"title\":\"Outlander mini\",\"description\":\"In perfect condition. Lorem ipsum dolor sit amet, sonet nusquam interpretaris et duo, ius soleat consequat vulputate ut\",\"email\":\"demo@tradus.com\",\"image\":\"https:\\/\\/apollo-ireland.akamaized.net\\/v1\\/files\\/irvcqv1wko8d1-HVYM\\/image\",\"created_at\":\"2016-10-20T00:00:00+00:00\"},{\"id\":4,\"title\":\"Some Object From API\",\"description\":\"Lorem ipsum dolor sit amet, sonet nusquam interpretaris et duo, ius soleat consequat vulputate ut\",\"email\":\"dummy2@demo.com\",\"image\":\"https:\\/\\/apollo-ireland.akamaized.net\\/v1\\/files\\/23pyd7sbdxvg-HVYM\\/image\",\"created_at\":\"2018-04-08T00:00:00+00:00\"}]"
+				}
+			]
+		},
+		{
+			"name": "Get Offer Id=1",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "tradus2018",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "http://127.0.0.1:8001/offers/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46dHJhZHVzMjAxOA==",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Request for: Getting the offer with an id=1."
+			},
+			"response": []
+		},
+		{
+			"name": "Search in Offers",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "tradus2018",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "http://127.0.0.1:8001/search/offers/lorem",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Request for searching table Offer, by title, description or email "
+			},
+			"response": []
+		},
+		{
+			"name": "Store Offer",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "tradus2018",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": "http://127.0.0.1:8001/offer",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46MTIz",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "Some Object From API",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Lorem ipsum dolor sit amet, sonet nusquam interpretaris et duo, ius soleat consequat vulputate ut",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "dummy2@demo.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "image",
+							"value": "https://apollo-ireland.akamaized.net/v1/files/23pyd7sbdxvg-HVYM/image",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Request for inserting a new record to the Offer Table"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Request",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "tradus2018",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8001/offers/2?title=Edited Title&description=Edited: Lorem ipsum dolor sit amet, sonet nusquam interpretaris et duo, ius soleat consequat vulputate ut&email=dummy2@demo.com&image=https://apollo-ireland.akamaized.net/v1/files/23pyd7sbdxvg-HVYM/image",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8001",
+					"path": [
+						"offers",
+						"2"
+					],
+					"query": [
+						{
+							"key": "title",
+							"value": "Edited Title",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "description",
+							"value": "Edited: Lorem ipsum dolor sit amet, sonet nusquam interpretaris et duo, ius soleat consequat vulputate ut",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "email",
+							"value": "dummy2@demo.com",
+							"equals": true,
+							"description": ""
+						},
+						{
+							"key": "image",
+							"value": "https://apollo-ireland.akamaized.net/v1/files/23pyd7sbdxvg-HVYM/image",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46dHJhZHVzMjAxOA==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "Edited: Lorem ipsum dolor sit amet, sonet nusquam interpretaris et duo, ius soleat consequat vulputate ut",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						},
+						{
+							"key": "",
+							"value": "",
+							"description": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": "Update a resource in the table Offer"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Offers",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": {
+						"username": "admin",
+						"password": "tradus2018",
+						"saveHelperData": true,
+						"showPassword": false
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8001/offers?offers=[{\"id\":3}, {\"id\":4}]",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8001",
+					"path": [
+						"offers"
+					],
+					"query": [
+						{
+							"key": "offers",
+							"value": "[{\"id\":3}, {\"id\":4}]",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46dHJhZHVzMjAxOA==",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "offers",
+							"value": "2, 3",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"description": "Deletes Offers in database, with id = Resource"
+			},
+			"response": []
+		}
+	]
+}
