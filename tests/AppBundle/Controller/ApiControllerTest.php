@@ -20,17 +20,35 @@ class ApiControllerTest extends WebTestCase
             ]
         ]);
 
-        $data = array(
-            'title' => 'TestCase Title',
-            'description' => 'some default test',
-            'email' => 'test'.mt_rand(1000000,(1000000*10)-1).'@tradus.com',
-            'image' => 'https://apollo-ireland.akamaized.net/v1/files/irvcqv1wko8d1-HVYM/image'
-        );
+        $ins_title = 'testUpdateOfferShouldPass';
+        $ins_description = 'testUpdateOfferShouldPass';
+        $ins_email = 'test_ins'.mt_rand(1000000,(1000000*10)-1).'@tradus.com';
+        $ins_image = 'https://apollo-ireland.akamaized.net/v1/files/0nmmvzkt4b1h-HVYM/image';
 
+        $data = array(
+            'title' => $ins_title,
+            'description' => $ins_description,
+            'email' => $ins_email,
+            'image' => $ins_image
+        );
         $response = $client->post($this->default_url.'/offer', [
             'body' => json_encode($data)
         ]);
+        $data = json_decode($response->getBody());
+        $last_id = $data->id;
+
         $this->assertEquals(200, $response->getStatusCode());
+
+        $response = $client->get($this->default_url.'/offers/'.$last_id, [
+            'body' => json_encode($data)
+        ]);
+
+        $data = json_decode($response->getBody());
+
+        $this->assertEquals($ins_title, $data->title);
+        $this->assertEquals($ins_description, $data->description);
+        $this->assertEquals($ins_email, $data->email);
+        $this->assertEquals($ins_image, $data->image);
     }
 
     public function testStoreOfferShouldFail_IfEmptyParams()

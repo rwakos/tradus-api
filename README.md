@@ -95,6 +95,13 @@ REST Methods
       **404** - if there is no match against the all id's.
 
 
+Unit Testing
+--------------
+
+The tests were performed against the API, instead of a Mockup API. This approach will lead to multiple insertions into the database.
+
+## PHP Storm Configuration for Unit Testing ##
+
 
 
 References
