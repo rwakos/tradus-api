@@ -2,17 +2,18 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\FOSRestController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use FOS\RestBundle\View\View;
+use AppBundle\Entity\Offer;
 
-class ApiController extends Controller {
+class ApiController extends FOSRestController {
     /**
-     * @Route("/")
-     * @Method("GET")
+     * @Rest\Get("/")
      */
     public function displayDocumentation()
     {
@@ -27,100 +28,103 @@ class ApiController extends Controller {
     }
 
     /**
-     * @Route("/offers")
-     * @Method("GET")
-     * @return Response
+     * @Rest\Get("/offers")
+     * @return JsonResponse
      */
     public function getOffers()
     {
+        $em = $this->getDoctrine()->getManager();
+        $offers = $em->getRepository('AppBundle:Offer')
+            ->findAll();
 
-
-        $offers = [
-            ["id"=>1, "title"=>"Outlander mini", "description"=>"In perfect condition", "email"=>"demo@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/irvcqv1wko8d1-HVYM/image", "created_at" => "2016-10-20"],
-            ["id"=>2, "title"=>"Motor XLMN98", "description"=>"Real Bargain", "email"=>"dummy@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/cqzybfy58cge3-HVYM/image", "created_at" => "2017-04-21"],
-            ["id"=>3, "title"=>"Fendt 936", "description"=>"Lorem ipsum dolor sit amet, sonet nusquam interpretaris et duo, ius soleat consequat vulputate ut, ei eos diam viris partem. Nihil platonem per cu. Eam cu wisi regione vocibus, ad vel sonet causae.", "email"=>"info@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/4ryz9mg3ze6e2-HVYM/image", "created_at" => "2017-07-01"]
-        ];
-
-        $data = ["data"=> $offers];
-        $response = new Response();
-        $response->setContent(json_encode($data));
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-        return $response;
+        if (($offers === null)||(empty($offers))) {
+            return new View("there are no offers", Response::HTTP_NOT_FOUND);
+        }
+        return $offers;
     }
 
     /**
-     * @Route("/offers/{id}")
-     * @Method("GET")
+     * @Rest\Get("/offers/{id}")
      * @param $id int
      * @return JsonResponse
      */
     public function getOffer($id)
     {
-        $offers = [
-            ["id"=>1, "title"=>"Outlander mini", "description"=>"In perfect condition", "email"=>"demo@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/irvcqv1wko8d1-HVYM/image", "created_at" => "2016-10-20"],
-            ["id"=>2, "title"=>"Motor XLMN98", "description"=>"Real Bargain", "email"=>"dummy@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/cqzybfy58cge3-HVYM/image", "created_at" => "2017-04-21"],
-            ["id"=>3, "title"=>"Fendt 936", "description"=>"Lorem ipsum dolor sit amet, sonet nusquam interpretaris et duo, ius soleat consequat vulputate ut, ei eos diam viris partem. Nihil platonem per cu. Eam cu wisi regione vocibus, ad vel sonet causae.", "email"=>"info@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/4ryz9mg3ze6e2-HVYM/image", "created_at" => "2017-07-01"]
-        ];
-
-        $data = ["data"=> $offers[$id-1]];
-        $response = new Response();
-        $response->setContent(json_encode($data));
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Access-Control-Allow-Methods', 'GET, OPTIONS');
-
-        return $response;
+        $singleresult = $this->getDoctrine()->getRepository('AppBundle:Offer')->find($id);
+        if (($singleresult === null)||(empty($singleresult))) {
+            return new View("Offer not found", Response::HTTP_NOT_FOUND);
+        }
+        return $singleresult;
     }
 
     /**
-     * @Route("/search/offers/{search}")
+     * @Rest\Get("/search/offers/{search}")
      * @param $search string
-     * @Method("GET")
      * @return JsonResponse
      */
     public function searchOffers($search)
     {
-        $offers = [
-            ["id"=>1, "title"=>"Outlander mini", "description"=>"In perfect condition", "email"=>"demo@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/irvcqv1wko8d1-HVYM/image", "created_at" => "2016-10-20"],
-            ["id"=>2, "title"=>"Motor XLMN98", "description"=>"Real Bargain", "email"=>"dummy@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/cqzybfy58cge3-HVYM/image", "created_at" => "2017-04-21"],
-            ["id"=>3, "title"=>"Fendt 936", "description"=>"Lorem ipsum dolor sit amet, sonet nusquam interpretaris et duo, ius soleat consequat vulputate ut, ei eos diam viris partem. Nihil platonem per cu. Eam cu wisi regione vocibus, ad vel sonet causae.", "email"=>"info@tradus.com","image"=>"https://apollo-ireland.akamaized.net/v1/files/4ryz9mg3ze6e2-HVYM/image", "created_at" => "2017-07-01"]
-        ];
+        $s = '%'.str_replace(" ","%",$search).'%';
+        $repository = $this->getDoctrine()
+            ->getRepository('AppBundle:Offer');
 
-        $data = ["data"=> $offers[mt_rand(0,2)]];
-        $response = new Response();
-        $response->setContent(json_encode($data));
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Access-Control-Allow-Methods', 'GET, OPTIONS');
+        $query = $repository->createQueryBuilder('o')
+            ->where('o.title LIKE :search')
+            ->orWhere('o.description LIKE :search')
+            ->orWhere('o.email LIKE :search')
+            ->setParameter('search', $s)
+            ->orderBy('o.id', 'DESC')
+            ->getQuery();
 
-        return $response;
+        $offers = $query->getResult();
+
+        if (($offers === null)||(empty($offers))) {
+            return new View("there are no offers", Response::HTTP_NOT_FOUND);
+        }
+        return $offers;
     }
 
     /**
-     * @Route("/offer")
-     * @Method("POST")
+     * @Rest\Post("/offer")
      * @param $request Request
-     * @return Response
+     * @return JsonResponse
      */
     public function storeOffer(Request $request)
     {
+        //Validations
+        $title = $request->get('title');
+        $description = $request->get('description');
+        $email = $request->get('email');
+        $image = $request->get('description');
 
-        $id = 4;
-        $data = ["data"=> $id];
-        $response = new Response();
-        $response->setContent(json_encode($data));
-        $response->headers->set('Content-Type', 'application/json');
-        $response->headers->set('Access-Control-Allow-Origin', '*');
-        $response->headers->set('Access-Control-Allow-Methods', 'POST, OPTIONS');
+        if(empty($title) || empty($description) || empty($email) || empty($image))
+        {
+            return new View("NULL VALUES ARE NOT ALLOWED", Response::HTTP_NOT_ACCEPTABLE);
+        }
+        $em = $this->getDoctrine()->getManager();
+        $duplicate_email = $em->getRepository('AppBundle:Offer')
+            ->findOneBy(['email' => $email]);
+        if ($duplicate_email) {
+            return new View("THE EMAIL ACCOUNT ALREADY EXISTS", Response::HTTP_NOT_ACCEPTABLE);
+        }
 
-        return $response;
+        //Store in Database
+        $offer = new Offer();
+        $offer->setTitle($title);
+        $offer->setDescription($description);
+        $offer->setEmail($email);
+        $offer->setImage($image);
+        $offer->setCreatedAt(date('Y-m-d'));
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($offer);
+        $em->flush();
+
+        return new View("Offer Added Successfully", Response::HTTP_OK);
     }
 
     /**
-     * @Route("/offers/{id}")
-     * @Method("PATCH")
+     * @Rest\Patch("/offers/{id}")
      * @param $id int
      * @param $request Request
      * @return Response
@@ -140,8 +144,7 @@ class ApiController extends Controller {
     }
 
     /**
-     * @Route("/offers")
-     * @Method("DELETE")
+     * @Rest\Delete("/offers")
      * @param $request Request
      * @return Response
      */
