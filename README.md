@@ -3,6 +3,7 @@ Api for Offers @Tradus
 
 This REST API will allow you to perform all the CRUD methods with the Offer Object.
 
+For the environment of this API, I used the address: [127.0.0.1:8001][1]
 
 Offer's Table Specs
 --------------
