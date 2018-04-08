@@ -23,9 +23,9 @@ REST Methods
   
     Returns all Offers in the table Offer.
   
-  **Error Handler:**
+    **Error Handler:**
   
-  **404** - if there are no Offers.
+    **404** - if there are no Offers.
   
     
   * [**Search Offers**][1]  Verb: GET [/search/offers/{search}][1]
@@ -34,9 +34,9 @@ REST Methods
     
           @param search is a string
     
-  **Error Handler:**
+    **Error Handler:**
     
-  **404** - if there are no Offers that matches the search.  
+    **404** - if there are no Offers that matches the search.  
   
   
   * [**Get One Offer**][1]  Verb: GET [/offers/{id}][1]
@@ -45,7 +45,7 @@ REST Methods
       
             @param id is an int
     
-    Note: this URL should have been [/offer/{id}][1]  (in singular), so the search url could be: [/offers/search/{id}][1]
+    Note: this URL should have been [/offer/{id}][1]  (in singular), so the search url could be: [/offers/search/{search}][1]
       
     **Error Handler:**
       
@@ -54,6 +54,8 @@ REST Methods
   
   * [**Store Offer**][1]  Verb: POST [/offer][1]
         
+      Stores the Offer.
+      
       Returns status of **200** on Success.
         
       **Error Handler:**
@@ -63,7 +65,7 @@ REST Methods
 
   * [**Update Offer**][1]  Verb: PUT [/offers/id][1]
         
-      Updates the Offer if found with the "id" of @param id.
+      Updates the Offer, if found with the "id" of @param id.
             
            @param id is an int
       
@@ -80,7 +82,7 @@ REST Methods
 
   * [**Delete Offer(s)**][1]  Verb: DELETE [/offers/id][1]
         
-      Updates the Offer if found with the "id" of @param id.
+      Delete the Offer(s) if found with the "id" of @param id.
             
            @param offers is json in format: [{"id":1}, {"id":3}]
       Returns status of **200** on Success.
