@@ -170,7 +170,38 @@ class ApiControllerTest extends WebTestCase
         }
     }
 
+    public function testUpdateOfferShouldPass(){
+        $client = new Client([
+            'base_url' => $this->default_url,
+            'defaults' => [
+                'exceptions' => false
+            ]
+        ]);
+        $data = array(
+            'title' => 'TestCase Title',
+            'description' => 'some default test',
+            'email' => 'test'.mt_rand(1000000,(1000000*10)-1).'@tradus.com',
+            'image' => 'https://apollo-ireland.akamaized.net/v1/files/irvcqv1wko8d1-HVYM/image'
+        );
+        $response = $client->post($this->default_url.'/offer', [
+            'body' => json_encode($data)
+        ]);
+        $data = json_decode($response->getBody());
+        $last_id = $data->id;
+        $upd_email = 'test_upd'.mt_rand(1000000,(1000000*10)-1).'@tradus.com';
 
+        $data = array(
+            'title' => 'testUpdateOfferShouldPass',
+            'description' => 'testUpdateOfferShouldPass',
+            'email' => $upd_email,
+            'image' => 'https://apollo-ireland.akamaized.net/v1/files/0nmmvzkt4b1h-HVYM/image'
+        );
+        $response = $client->put($this->default_url.'/offers/'.$last_id, [
+            'body' => json_encode($data)
+        ]);
+
+        $this->assertEquals(200, $response->getStatusCode());
+    }
 
     public function testGetOffersURL()
     {
@@ -185,5 +216,17 @@ class ApiControllerTest extends WebTestCase
         $this->assertEquals(200, $response->getStatusCode());
     }
 
+    public function testGetOffer()
+    {
+        $client = new Client([
+            'base_url' => $this->default_url,
+            'defaults' => [
+                'exceptions' => false
+            ]
+        ]);
+
+        $response = $client->get($this->default_url.'/offers',[]);
+        $this->assertEquals(200, $response->getStatusCode());
+    }
 
 }

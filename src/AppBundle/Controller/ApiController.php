@@ -169,7 +169,9 @@ class ApiController extends FOSRestController {
 
             $query = $repository->createQueryBuilder('o')
                 ->where('o.id <> :id')
+                ->AndWhere('o.email = :email')
                 ->setParameter('id', $id)
+                ->setParameter('email', $email)
                 ->getQuery();
 
             $duplicate_email = $query->getResult();
