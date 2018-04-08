@@ -12,6 +12,11 @@ use FOS\RestBundle\View\View;
 use AppBundle\Entity\Offer;
 
 class ApiController extends FOSRestController {
+    private $len_title = 80;
+    private $len_description = 255;
+    private $len_email = 80;
+    private $len_image = 255;
+
     /**
      * @Rest\Get("/offers")
      * @return JsonResponse
@@ -77,10 +82,10 @@ class ApiController extends FOSRestController {
     public function storeOffer(Request $request)
     {
         //Validations
-        $title = $request->get('title');
-        $description = $request->get('description');
-        $email = $request->get('email');
-        $image = $request->get('image');
+        $title = substr($request->get('title'),$this->len_title);
+        $description = substr($request->get('description'),$this->len_description);
+        $email = substr($request->get('email'),$this->len_email);
+        $image = substr($request->get('image'),$this->len_image);
 
         if(empty($title) || empty($description) || empty($email) || empty($image))
         {
@@ -125,10 +130,10 @@ class ApiController extends FOSRestController {
 
     public function updateOffer($id, Request $request)
     {
-        $title = $request->get('title');
-        $description = $request->get('description');
-        $email = $request->get('email');
-        $image = $request->get('image');
+        $title = substr($request->get('title'),$this->len_title);
+        $description = substr($request->get('description'),$this->len_description);
+        $email = substr($request->get('email'),$this->len_email);
+        $image = substr($request->get('image'),$this->len_image);
 
         $offer_db = $this->getDoctrine()->getRepository('AppBundle:Offer')->find($id);
         if (empty($offer_db)){
