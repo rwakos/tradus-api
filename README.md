@@ -102,6 +102,17 @@ The tests were performed against the API, instead of a Mockup API. This approach
 
 ## PHP Storm Configuration for Unit Testing ##
 
+Here is the configuration for PHP Storm
+
+![Setting up PHP Storm](wiki/phpstorm-config.png)
+
+## Results for the Testings ##
+
+![Results](wiki/tests-pass.png)
+
+## Getting the Requests for Postman:
+
+![Postman](wiki/Tradus-API.postman_collection.v2.json)
 
 
 References
