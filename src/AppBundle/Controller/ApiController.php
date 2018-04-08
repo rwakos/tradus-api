@@ -118,7 +118,12 @@ class ApiController extends FOSRestController {
         $em->persist($offer);
         $em->flush();
 
-        return new View("OFFER STORED SUCCESFULLY", Response::HTTP_OK);
+        $id = $offer->getId();
+
+        $last_inserted = $em->getRepository('AppBundle:Offer')
+            ->find($id);
+
+        return new View($last_inserted, Response::HTTP_OK);
     }
 
     /**
