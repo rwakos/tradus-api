@@ -13,67 +13,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="142">
-              <caret line="180" column="9" lean-forward="false" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
-              <folding>
-                <element signature="e#40#99#0#PHP" expanded="true" />
-                <element signature="e#659#994#0#PHP" expanded="false" />
-                <element signature="e#1099#1409#0#PHP" expanded="false" />
-                <element signature="e#1532#2251#0#PHP" expanded="false" />
-                <element signature="e#2360#4062#0#PHP" expanded="false" />
-                <element signature="e#6434#7364#0#PHP" expanded="false" />
-                <element signature="e#7370#7541#0#PHP" expanded="false" />
-                <element signature="e#7547#7714#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApiControllerTest.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/ApiControllerTest.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-30">
-              <caret line="13" column="46" lean-forward="false" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
-              <folding>
-                <element signature="e#46#98#0#PHP" expanded="true" />
-                <element signature="e#324#1689#0#PHP" expanded="false" />
-                <element signature="e#1695#3984#0#PHP" expanded="false" />
-                <element signature="e#1787#1924#1#PHP" expanded="false" />
-                <element signature="e#1943#2209#0#PHP" expanded="false" />
-                <element signature="e#2219#2459#0#PHP" expanded="false" />
-                <element signature="e#2477#2736#0#PHP" expanded="false" />
-                <element signature="e#3012#3237#0#PHP" expanded="false" />
-                <element signature="e#3990#5202#0#PHP" expanded="false" />
-                <element signature="e#4086#4223#1#PHP" expanded="false" />
-                <element signature="e#5208#6160#0#PHP" expanded="false" />
-                <element signature="e#6166#7952#0#PHP" expanded="false" />
-                <element signature="e#6240#6377#1#PHP" expanded="false" />
-                <element signature="e#7958#8303#0#PHP" expanded="false" />
-                <element signature="e#8309#8650#0#PHP" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RequestException.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="644">
-              <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="187">
-                <caret line="114" column="10" lean-forward="false" selection-start-line="114" selection-start-column="10" selection-end-line="114" selection-end-column="10" />
+              <first_editor relative-caret-position="233">
+                <caret line="110" column="4" lean-forward="false" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -215,7 +160,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1523048535474</updated>
-      <workItem from="1523048536726" duration="42230000" />
+      <workItem from="1523048536726" duration="42422000" />
     </task>
     <servers />
   </component>
@@ -252,7 +197,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42230000" />
+    <option name="totallyTimeSpent" value="42422000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -267,7 +212,7 @@
     <frame x="-8" y="-8" width="1376" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19452888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19452888" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -347,14 +292,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="644">
-          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/psr/http-message/src/MessageInterface.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="62">
@@ -363,20 +300,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php">
+    <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Exception/RequestException.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="180" column="9" lean-forward="false" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
-          <folding>
-            <element signature="e#40#99#0#PHP" expanded="true" />
-            <element signature="e#659#994#0#PHP" expanded="false" />
-            <element signature="e#1099#1409#0#PHP" expanded="false" />
-            <element signature="e#1532#2251#0#PHP" expanded="false" />
-            <element signature="e#2360#4062#0#PHP" expanded="false" />
-            <element signature="e#6434#7364#0#PHP" expanded="false" />
-            <element signature="e#7370#7541#0#PHP" expanded="false" />
-            <element signature="e#7547#7714#0#PHP" expanded="false" />
-          </folding>
+        <state relative-caret-position="644">
+          <caret line="31" column="25" lean-forward="false" selection-start-line="31" selection-start-column="15" selection-end-line="31" selection-end-column="25" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -404,11 +332,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="180" column="9" lean-forward="false" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
+          <folding>
+            <element signature="e#40#99#0#PHP" expanded="true" />
+            <element signature="e#659#994#0#PHP" expanded="false" />
+            <element signature="e#1099#1409#0#PHP" expanded="false" />
+            <element signature="e#1532#2251#0#PHP" expanded="false" />
+            <element signature="e#2360#4062#0#PHP" expanded="false" />
+            <element signature="e#6434#7364#0#PHP" expanded="false" />
+            <element signature="e#7370#7541#0#PHP" expanded="false" />
+            <element signature="e#7547#7714#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="187">
-            <caret line="114" column="10" lean-forward="false" selection-start-line="114" selection-start-column="10" selection-end-line="114" selection-end-column="10" />
+          <first_editor relative-caret-position="233">
+            <caret line="110" column="4" lean-forward="false" selection-start-line="110" selection-start-column="4" selection-end-line="110" selection-end-column="4" />
             <folding />
           </first_editor>
           <second_editor />

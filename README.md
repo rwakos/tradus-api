@@ -106,6 +106,11 @@ Here is the configuration for PHP Storm
 
 ![Setting up PHP Storm](wiki/phpstorm-config.png)
 
+## CMD Command ##
+
+    C:\PHP5\php.exe C:\PHPUnitPHAR\phpunit.phar --configuration C:\xampp\htdocs\tradus-api\phpunit.xml.dist Tests\AppBundle\Controller\ApiControllerTest C:\xampp\htdocs\tradus-api\tests\AppBundle\Controller\ApiControllerTest.php --teamcity
+
+
 ## Results for the Testings ##
 
 ![Results](wiki/tests-pass.png)
