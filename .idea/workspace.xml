@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f6df4de6-9c64-40ec-8cb8-b59e95f59aec" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/AppBundle/Controller/ApiControllerTest.php" afterPath="$PROJECT_DIR$/tests/AppBundle/Controller/ApiControllerTest.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="142">
-              <caret line="180" column="9" lean-forward="true" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
+              <caret line="180" column="9" lean-forward="false" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
               <folding>
                 <element signature="e#40#99#0#PHP" expanded="true" />
                 <element signature="e#659#994#0#PHP" expanded="false" />
@@ -33,11 +32,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ApiControllerTest.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ApiControllerTest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/ApiControllerTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="199" column="40" lean-forward="false" selection-start-line="199" selection-start-column="40" selection-end-line="199" selection-end-column="40" />
+            <state relative-caret-position="256">
+              <caret line="218" column="0" lean-forward="false" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
               <folding>
                 <element signature="e#46#98#0#PHP" expanded="true" />
                 <element signature="e#1033#3322#0#PHP" expanded="false" />
@@ -51,7 +50,7 @@
                 <element signature="e#4546#5498#0#PHP" expanded="false" />
                 <element signature="e#5578#5715#1#PHP" expanded="false" />
                 <element signature="e#5734#6014#0#PHP" expanded="false" />
-                <element signature="e#6771#7116#0#PHP" expanded="false" />
+                <element signature="e#7296#7641#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -97,8 +96,8 @@
         <option value="$PROJECT_DIR$/app/AppKernel.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/tests/AppBundle/Controller/ApiControllerTest.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php" />
+        <option value="$PROJECT_DIR$/tests/AppBundle/Controller/ApiControllerTest.php" />
       </list>
     </option>
   </component>
@@ -237,20 +236,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1523048535474</updated>
-      <workItem from="1523048536726" duration="39511000" />
+      <workItem from="1523048536726" duration="40645000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ApiControllerTest - 2018.04.08 at 17h 35m 20s.xml">
-      <configuration name="ApiControllerTest" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="ApiControllerTest_testStoreOfferShouldPass - 2018.04.08 at 17h 35m 07s.xml">
-      <configuration name="ApiControllerTest.testStoreOfferShouldPass" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
-    <history-entry file="ApiControllerTest_testUpdateOfferShouldPass - 2018.04.08 at 17h 38m 35s.xml">
-      <configuration name="ApiControllerTest.testUpdateOfferShouldPass" configurationId="PHPUnitRunConfigurationType" />
-    </history-entry>
     <history-entry file="ApiControllerTest_testUpdateOfferShouldPass - 2018.04.08 at 17h 39m 00s.xml">
       <configuration name="ApiControllerTest.testUpdateOfferShouldPass" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
@@ -272,9 +262,18 @@
     <history-entry file="ApiControllerTest_testUpdateOfferShouldPass - 2018.04.08 at 17h 52m 19s.xml">
       <configuration name="ApiControllerTest.testUpdateOfferShouldPass" configurationId="PHPUnitRunConfigurationType" />
     </history-entry>
+    <history-entry file="ApiControllerTest_testUpdateOfferShouldPass - 2018.04.08 at 17h 57m 28s.xml">
+      <configuration name="ApiControllerTest.testUpdateOfferShouldPass" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="ApiControllerTest_testUpdateOfferShouldPass - 2018.04.08 at 17h 58m 11s.xml">
+      <configuration name="ApiControllerTest.testUpdateOfferShouldPass" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
+    <history-entry file="ApiControllerTest_testUpdateOfferShouldPass - 2018.04.08 at 18h 23m 30s.xml">
+      <configuration name="ApiControllerTest.testUpdateOfferShouldPass" configurationId="PHPUnitRunConfigurationType" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39511000" />
+    <option name="totallyTimeSpent" value="40645000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -294,7 +293,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31085527" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4194079" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -394,10 +393,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="180" column="9" lean-forward="false" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
+          <folding>
+            <element signature="e#40#99#0#PHP" expanded="true" />
+            <element signature="e#659#994#0#PHP" expanded="false" />
+            <element signature="e#1099#1409#0#PHP" expanded="false" />
+            <element signature="e#1532#2251#0#PHP" expanded="false" />
+            <element signature="e#2360#4062#0#PHP" expanded="false" />
+            <element signature="e#6434#7364#0#PHP" expanded="false" />
+            <element signature="e#7370#7541#0#PHP" expanded="false" />
+            <element signature="e#7547#7714#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/AppBundle/Controller/ApiControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="199" column="40" lean-forward="false" selection-start-line="199" selection-start-column="40" selection-end-line="199" selection-end-column="40" />
+        <state relative-caret-position="256">
+          <caret line="218" column="0" lean-forward="false" selection-start-line="218" selection-start-column="0" selection-end-line="218" selection-end-column="0" />
           <folding>
             <element signature="e#46#98#0#PHP" expanded="true" />
             <element signature="e#1033#3322#0#PHP" expanded="false" />
@@ -411,24 +427,7 @@
             <element signature="e#4546#5498#0#PHP" expanded="false" />
             <element signature="e#5578#5715#1#PHP" expanded="false" />
             <element signature="e#5734#6014#0#PHP" expanded="false" />
-            <element signature="e#6771#7116#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/ApiController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="180" column="9" lean-forward="true" selection-start-line="180" selection-start-column="9" selection-end-line="180" selection-end-column="9" />
-          <folding>
-            <element signature="e#40#99#0#PHP" expanded="true" />
-            <element signature="e#659#994#0#PHP" expanded="false" />
-            <element signature="e#1099#1409#0#PHP" expanded="false" />
-            <element signature="e#1532#2251#0#PHP" expanded="false" />
-            <element signature="e#2360#4062#0#PHP" expanded="false" />
-            <element signature="e#6434#7364#0#PHP" expanded="false" />
-            <element signature="e#7370#7541#0#PHP" expanded="false" />
-            <element signature="e#7547#7714#0#PHP" expanded="false" />
+            <element signature="e#7296#7641#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>

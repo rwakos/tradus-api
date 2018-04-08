@@ -188,19 +188,33 @@ class ApiControllerTest extends WebTestCase
         ]);
         $data = json_decode($response->getBody());
         $last_id = $data->id;
+        $upd_title = 'testUpdateOfferShouldPass';
+        $upd_description = 'testUpdateOfferShouldPass';
         $upd_email = 'test_upd'.mt_rand(1000000,(1000000*10)-1).'@tradus.com';
+        $upd_image = 'https://apollo-ireland.akamaized.net/v1/files/0nmmvzkt4b1h-HVYM/image';
 
         $data = array(
-            'title' => 'testUpdateOfferShouldPass',
-            'description' => 'testUpdateOfferShouldPass',
+            'title' => $upd_title,
+            'description' => $upd_description,
             'email' => $upd_email,
-            'image' => 'https://apollo-ireland.akamaized.net/v1/files/0nmmvzkt4b1h-HVYM/image'
+            'image' => $upd_image
         );
         $response = $client->put($this->default_url.'/offers/'.$last_id, [
             'body' => json_encode($data)
         ]);
 
         $this->assertEquals(200, $response->getStatusCode());
+
+        $response = $client->get($this->default_url.'/offers/'.$last_id, [
+            'body' => json_encode($data)
+        ]);
+
+        $data = json_decode($response->getBody());
+
+        $this->assertEquals($upd_title, $data->title);
+        $this->assertEquals($upd_description, $data->description);
+        $this->assertEquals($upd_email, $data->email);
+        $this->assertEquals($upd_image, $data->image);
     }
 
     public function testGetOffersURL()
