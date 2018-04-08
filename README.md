@@ -95,7 +95,20 @@ REST Methods
       **404** - if there is no match against the all id's.
 
 
-[1]:  https://void.com/
+
+
+References
+--------------
+* [What is Symfony][2]
+* [Course 3: Talking to a MySQL Database in PHP][3]
+* [How To Create Simple REST API In Symfony 3.1][4]
+
+[1]:    https://void.com/
+[2]:    https://symfony.com/
+[3]:    https://knpuniversity.com/screencast/php-ep3
+[4]:    https://www.cloudways.com/blog/rest-api-in-symfony-3-1/
+
+
 
 
     @Work Made By Richard Reveron 2018 for Tradus.
