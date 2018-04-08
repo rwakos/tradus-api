@@ -112,7 +112,7 @@ Here is the configuration for PHP Storm
 
 ## Getting the Requests for Postman:
 
-![Postman](wiki/Tradus-API.postman_collection.v2.json)
+[Postman](wiki/Tradus-API.postman_collection.v2.json)
 
 
 References
